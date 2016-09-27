@@ -418,7 +418,7 @@ class TreeEditor(admin.ModelAdmin):
         if position in ('last-child', 'left'):
             try:
                 tree_manager.move_node(cut_item, pasted_on, position)
-            except InvalidMove, e:
+            except InvalidMove as e:
                 self.message_user(request, unicode(e))
                 return HttpResponse('FAIL')
 
