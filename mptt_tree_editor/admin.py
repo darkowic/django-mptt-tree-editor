@@ -85,7 +85,7 @@ def _build_tree_structure(cls):
         all_nodes[p_id] = []
 
         if parent_id:
-            if not all_nodes.has_key(parent_id):
+            if parent_id not in all_nodes:
                 # This happens very rarely, but protect against parents that
                 # we have yet to iteratove over.
                 all_nodes[parent_id] = []
@@ -310,7 +310,7 @@ class TreeEditor(admin.ModelAdmin):
 
         self._collect_editable_booleans()
 
-        if not self._ajax_editable_booleans.has_key(attr):
+        if attr not in self._ajax_editable_booleans:
             return HttpResponseBadRequest("not a valid attribute %s" % attr)
 
         try:
